@@ -8,9 +8,9 @@ on:
 jobs:
   verify:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
-      - uses: actions/checkout@v3
+      - uses: useblacksmith/checkout@v1
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
@@ -21,9 +21,9 @@ jobs:
       - run: just verify
   release:
     needs: verify
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
-      - uses: actions/checkout@v3
+      - uses: useblacksmith/checkout@v1
         with:
           fetch-depth: 0
       - uses: dtolnay/rust-toolchain@stable
